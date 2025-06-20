@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Портфолио</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&family=Lora&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+
+    .burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.burger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    align-items: center;
+    padding: 20px 0;
+    transform: translateY(-200%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transform: translateY(-200%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+  }
+}
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      font-family: 'Source Sans Pro', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 40px 60px;
+      border-radius: 8px;
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: 3.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+      font-family: 'Lora', serif;
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .about, .contact {
+      text-align: center;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      nav { flex-direction: column; align-items: center; text-align: center; }
+      nav a { margin: 10px 0; }
+      .hero h1 { font-size: 2rem; padding: 20px; }
+    }
+  </style>
+</head>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('active');
+  }
+
+  // Автоматическое закрытие при клике по ссылке
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("#navLinks a");
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("active");
+      });
+    });
+  });
+</script>
+
+
+<body>
+  <nav>
+  <div><strong>Referenz</strong></div>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Main</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About me</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+
+  <section class="hero" id="home">
+    <div class="hero-overlay" data-aos="fade-up">
+      <h1>Referenz</h1>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <h2 style="text-align:center; margin-bottom:30px;" data-aos="fade-up">Галерея</h2>
+    <div class="gallery-grid">
+      <img src="1.jpg" alt="1" data-aos="zoom-in">
+      <img src="2.jpg" alt="2" data-aos="zoom-in">
+      <img src="3.jpg" alt="3" data-aos="zoom-in">
+      <img src="4.jpg" alt="4" data-aos="zoom-in">
+      <img src="5.jpg" alt="5" data-aos="zoom-in">
+      <img src="6.jpg" alt="6" data-aos="zoom-in">
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <h2 style="margin-bottom:20px;" data-aos="fade-right">Обо мне</h2>
+    <p data-aos="fade-right">
+      Я веб-разработчик и визуальный рассказчик. Создаю сайты, которые вдохновляют и говорят без слов.
+    </p>
+  </section>
+
+  <section class="section contact" id="contact">
+    <h2 style="margin-bottom:20px;" data-aos="fade-left">Контакты</h2>
+    <p data-aos="fade-left">
+      Связь: <a href="mailto:email@example.com">email@example.com</a><br>
+      Telegram: <a href="https://t.me/yourtelegram" target="_blank">@yourtelegram</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Твоё Имя. Все права защищены.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
